@@ -1,0 +1,25 @@
+#version 450
+
+
+// From the vertex shader.
+layout(location = 0) in vec3 fragColor;
+
+/*
+ * layout: specifies a location.
+ * out: tells the compiler that this is a output variable
+ * vec4: variable type
+ * outColor: varible name
+ */
+layout (location = 0) out vec4 outColor;
+
+layout(push_constant) uniform Push {
+    mat4 modelMatrix;
+    mat4 normalMatrix;
+} push;
+
+/*
+ * main is run per fragment given by the rasterizer.
+ */
+void main() {
+    outColor = vec4(fragColor, 1.0); // RGBA
+}
